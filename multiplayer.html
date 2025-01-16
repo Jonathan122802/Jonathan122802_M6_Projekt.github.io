@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Cards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family:"Impact", fantasy;
+            font-weight: 400;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #353535;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);  
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            width: 90%;
+            height: 90%;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            border: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.4s;  
+        }
+
+
+        .card-1 {
+            background-color: #69DDFF;
+        }
+
+        .card-2 {
+            background-color: #fcc726;
+        }
+
+        .card-3 {
+            background-color: #F86624;
+        }
+
+        .card-4 {
+            background-color: #52FFB8;
+        }
+
+        .project-card p {
+            padding: 6rem;
+            font-size: 50px;
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body onload="loadBtn()">
+    <div class="grid-container">
+        <div name="submit" class="project-card card-1" onclick="window.location.href='pong.html';">
+            <p>Pong</p>
+        </div> 
+        <div name="submit" class="project-card card-2" onclick="window.location.href='pacman.html';">
+            <p>PacMan</p>
+        </div>
+        <div name="submit" class="project-card card-3" onclick="window.location.href='qbert.html';">
+            <p>Q*bert</p>
+        </div>
+        <div name="submit" class="project-card card-4" onclick="window.location.href='arkanoid.html';">
+            <p>Arkanoid</p> 
+        </div>
+    </div>
+</body>
+
+<script src="script.js"></script>
+
+</html>
