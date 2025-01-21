@@ -1,9 +1,10 @@
 var btns, color_cache;
 var index = 0;
+var lastAction;
 
 function updtBtn(e) {
-    console.log("Hi")
     var key = e.key;
+    lastAction = new Date();
 
     switch (key) {
         case "w":
@@ -43,6 +44,10 @@ function updtBtn(e) {
         index = btns.length - 1;
     }
 
+    if (btns[index] == null){
+        return;
+    }
+
     btns[index].style.backgroundColor = update_alpha(color_cache[index]);
     btns[index].style.transform = "scale(1.03)";
 
@@ -58,13 +63,15 @@ function updtBtn(e) {
 function loadBtn() {
     index = 0;
     btns = document.getElementsByName("submit");
-    console.log(btns);
     color_cache = [];
     for (let i = 0; i < btns.length; i++) {
         color_cache.push(getComputedStyle(btns[i]).getPropertyValue("background-color"));
     }
-    console.log(color_cache);
     document.body.addEventListener("keyup", function (e) { updtBtn(e) });
+    var event = new KeyboardEvent("keyup");
+    document.body.dispatchEvent(event);
+
+    setInterval(checkTimeout, 1000);
 }
 
 function update_alpha(rgba) {
@@ -74,4 +81,13 @@ function update_alpha(rgba) {
     }
     var color = "rgba(" + values.join(",") + ")";
     return color;
+}
+
+function checkTimeout() {
+    var currentDate = new Date();
+    var secondDiff = Math.floor(Math.abs(currentDate-lastAction)/1000);
+    console.log(secondDiff);
+    if (secondDiff >= 45){
+        window.location.replace("index.html");
+    }
 }
