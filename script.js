@@ -1,10 +1,8 @@
 var btns, color_cache;
 var index = 0;
-var lastAction;
 
 function updtBtn(e) {
     var key = e.key;
-    lastAction = new Date();
 
     switch (key) {
         case "w":
@@ -44,7 +42,7 @@ function updtBtn(e) {
         index = btns.length - 1;
     }
 
-    if (btns[index] == null){
+    if (btns[index] == null) {
         return;
     }
 
@@ -70,8 +68,6 @@ function loadBtn() {
     document.body.addEventListener("keyup", function (e) { updtBtn(e) });
     var event = new KeyboardEvent("keyup");
     document.body.dispatchEvent(event);
-
-    setInterval(checkTimeout, 1000);
 }
 
 function update_alpha(rgba) {
@@ -81,13 +77,4 @@ function update_alpha(rgba) {
     }
     var color = "rgba(" + values.join(",") + ")";
     return color;
-}
-
-function checkTimeout() {
-    var currentDate = new Date();
-    var secondDiff = Math.floor(Math.abs(currentDate-lastAction)/1000);
-    console.log(secondDiff);
-    if (secondDiff >= 45){
-        window.location.replace("index.html");
-    }
 }
