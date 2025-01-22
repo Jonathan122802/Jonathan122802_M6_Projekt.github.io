@@ -17,16 +17,16 @@ function updtBtn(e) {
         case "d":
             index += 1;
             break;
-        case "ArrowUp":
+        case "t":
             index -= 2;
             break;
-        case "ArrowLeft":
+        case "f":
             index -= 1;
             break;
-        case "ArrowDown":
+        case "g":
             index += 2;
             break;
-        case "ArrowRight":
+        case "h":
             index += 1;
             break;
         case " ":
